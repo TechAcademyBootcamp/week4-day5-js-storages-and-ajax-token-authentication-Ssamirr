@@ -101,6 +101,8 @@ $(document).ready(function () {
                       </div>
                   </div>
               </div>`);
+          localStorage.setItem("card", product);
+
 
         }
 
@@ -144,11 +146,11 @@ $(document).ready(function () {
   document.querySelector('#form-join').addEventListener('submit', function (event) {
     event.preventDefault();
     let form_data = new Object();
-        document.querySelectorAll('#form-join input').forEach((input) =>{
-            form_data[input.getAttribute('name')] = input.value;
-           
-        });
-        
+    document.querySelectorAll('#form-join input').forEach((input) => {
+      form_data[input.getAttribute('name')] = input.value;
+
+    });
+
     document.querySelectorAll('#form-join small').forEach((small_tag) => {
       small_tag.innerHTML = '';
     })
@@ -156,23 +158,25 @@ $(document).ready(function () {
       url: `${domain}/accounts/api/login/`,
       method: 'POST',
       data: form_data,
-      success: function(response) {
-          console.log(response);
+      success: function (response) {
+        console.log(response);
         alert('Welcome');
-        window.location='product2.html';
-        localStorage.setItem('token',response.token);
+        window.location = 'product2.html';
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('user', username);
+
       },
       error: function (error_response) {
         console.log(error_response);
         alert('Try again');
-       
+
 
         let error_messages = error_response.responseJSON;
         if (error_messages.hasOwnProperty('non_field_errors')) {
           document.querySelector('#non_field_errors').innerText = error_messages['non_field_errors'];
         }
         for (let message_name in error_messages) {
-          let input = document.querySelector( `#form-join [name="${message_name}"`);
+          let input = document.querySelector(`#form-join [name="${message_name}"`);
           if (input) {
             let small_tag = input.parentElement.querySelector('small');
             small_tag.innerText = error_messages[message_name];
@@ -188,14 +192,14 @@ $(document).ready(function () {
     $('.joinj').val('');
     $('#form-join2,#form-join').toggle();
     $('.input-signup,.signup2,.welcome,.text-secondary,.text-secondary2,.q1-modal,.q2-modal,.reset-modal').toggle();
-    
-   if($('.linkjoin').text()=='Login'){
+
+    if ($('.linkjoin').text() == 'Login') {
       $('.linkjoin').text('Sign Up');
     }
-    else{
+    else {
       $('.linkjoin').text('Login');
-    } 
-    
+    }
+
   })
 
   document.querySelector('#form-join2').addEventListener('submit', function (event) {
@@ -256,7 +260,7 @@ function addToCard(x, id) {
   var target_element = event.target;
 
   if (target_element.closest('.kart') != null) {
-    console.log('ss');
+
     var card_title = card_body_parent.getElementsByClassName("card-title")[0].innerHTML;
     var card_pc = card_body_parent.getElementsByClassName("card-text")[0].innerHTML;
     var card_price = card_body_parent.getElementsByClassName("card-money")[0].innerHTML;
@@ -281,6 +285,7 @@ function addToCard(x, id) {
       document.querySelectorAll('.all-sum').forEach((Element) => {
         Element.innerHTML = all_sum;
       })
+
 
       let card_products = document.querySelector('#card_products');
       let card_group_div1 = document.createElement('div');
@@ -416,6 +421,9 @@ function addToCard(x, id) {
             element.innerHTML = sum;
           })
         })
+
+     
+
       }
 
 
@@ -449,6 +457,7 @@ function addToCard(x, id) {
               element.innerHTML = product_count;
             })
           })
+         
         }
       }
 
@@ -478,6 +487,7 @@ function addToCard(x, id) {
         document.querySelectorAll('.all-sum').forEach((element) => {
           element.innerHTML = product_allsum;
         })
+   
       }
 
       card_group_increase.addEventListener('click', function () {
@@ -519,6 +529,10 @@ function addToCard(x, id) {
         removeItem(this);
       })
     }
+    //localestorage
+    // var localestorageSum=document.querySelector('.all-sum').innerHTML;
+    // localStorage.setItem('allsum', localestorageSum);
+    
 
     // CHANGING BASKET ITEMS COUNT
     var es = document.getElementById('card_products').children;
@@ -526,6 +540,7 @@ function addToCard(x, id) {
       items.innerHTML = es.length;
     })
   }
+
   else {
     document.querySelector('#cardbutton').click();
     let card_img_top = x.querySelector('.card-img-top').getAttribute('src');
@@ -541,6 +556,10 @@ function addToCard(x, id) {
     })
 
   }
+//localestorage
+  // const sum_all = localStorage.getItem('allsum');
+  // document.querySelector('.all-sum').innerHTML = sum_all;
+
 
 
 }

@@ -444,23 +444,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-xl-3 col-md-4 col-12 col-sm-6 pictures">
-                                    <div class=" card" data-toggle="modal" data-target="#exampleModal1"
-                                        style="width: 13rem;">
-                                        <img class=" shekil" style="height: 220px;"
-                                            src="http://s3.amazonaws.com/redqteam.com/pickbazar/lamb_chops.jpg"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <h6 class="cardname">Lamb Chops</h6>
-                                            <h6 class="cardlb">10 lb</h6>
-                                            <p class="cardmoney">$12</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-xl-3 col-md-4 col-12 col-sm-6 pictures">
+                            <div class="row picturess">
+                               
+                                <!-- <div class="col-lg-3 col-xl-3 col-md-4 col-12 col-sm-6 pictures">
                                     <div class=" card" data-toggle="modal" data-target="#exampleModal1"
                                         style="width: 13rem;">
                                         <img class=" shekil" style="height: 220px;"
@@ -635,12 +621,12 @@
 
                                     </div>
 
-                                </div>
-                                <div class="text-center col-12" style="margin-top:70px;">
-                                    <button class="bottomleft">Load More</button>
-                                </div>
-                            </div>
+                                </div> -->
 
+                            </div>
+                            <div class="text-center col-12" style="margin-top:70px;">
+                                <button class="bottomleft">Load More</button>
+                            </div>
 
                         </div>
                     </div>
@@ -939,7 +925,7 @@
         <div>
             <div class="settingsmenu">Staff</div>
             <div class="settingsmenu">Settings</div>
-            <div class="settingsmenu">Log Out</div>
+            <div class="settingsmenu logout">Log Out</div>
         </div>
     </div>
     <div class="full" style="width: 100%; height:100%;background-color: rgba(0, 0, 0, 0.5);;position:fixed;top:0;">
@@ -956,6 +942,7 @@
                 Add Product
             </div>
             <form class="form-add-product" id="form-add-product" action="">
+                <input type="hidden" val="">
                 <div class="mb-4" style="overflow-y: scroll;height: 450px;overflow-x: hidden;">
                     <div class="row">
                         <div class="addproductsleft col-lg-4 col-md-12  mt-5"
@@ -974,8 +961,9 @@
                                             </g>
                                         </svg></div>
                                     <span class="drag">Drag/Upload</span>
-                                    <input type="file" class="d-none upload" name="" id="">
+                                    <input type="file" class="d-none upload" name="main_image" id="">
                                     <span class="upload">your image here</span>
+                                    <small style="color:red"></small>
                                 </div>
                                 <div id="card-img">
 
@@ -993,56 +981,58 @@
                             <div>
                                 <label class="labelname" for="Name">Name</label>
                                 <br>
-                                <input class="inputstyle" type="text" name="" id="name-input">
+                                <input class="inputstyle" type="text" name="title" id="name-input">
                                 <small style="color:red"></small>
                             </div>
                             <div>
                                 <label class="labelname" for="">Description</label>
                                 <br>
-                                <textarea class="inputstyle" name="" type="textarea" id="" cols="" rows="3"></textarea>
+                                <textarea class="inputstyle" name="description" type="textarea" id="textarea-input" cols=""
+                                    rows="3"></textarea>
                                 <small style="color:red"></small>
                             </div>
                             <div>
                                 <label class="labelname" for="unit">Unit</label>
                                 <br>
-                                <input class="inputstyle" type="text" name="" id="unit-input">
+                                <input class="inputstyle" type="text" name="unit" id="unit-input">
+                                <small style="color:red"></small>
+                            </div>
+                            <div>
+                                <label class="labelname" for="saleprice">Amount By Unit</label>
+                                <br>
+                                <input class="inputstyle" type="number" name="amount_by_unit" id="amount-by-unit">
                                 <small style="color:red"></small>
                             </div>
                             <div>
                                 <label class="labelname" for="Price">Price</label>
                                 <br>
-                                <input class="inputstyle" type="number" name="" id="price-input">
+                                <input class="inputstyle" type="number" name="price" id="price-input">
                                 <small style="color:red"></small>
                             </div>
-                            <div>
-                                <label class="labelname" for="saleprice">Sale Price</label>
-                                <br>
-                                <input class="inputstyle" type="number" name="" id="">
-                                <small style="color:red"></small>
-                            </div>
+
                             <div>
                                 <label class="labelname" for="">Discount In Percent</label>
                                 <br>
-                                <input class="inputstyle" type="number" name="" id="">
+                                <input class="inputstyle" type="number" name="discount_price" id="discount-price">
                                 <small style="color:red"></small>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <label class="labelname" for="Product">Product Quantity</label>
                                 <br>
-                                <input class="inputstyle" type="number" name="" id="">
+                                <input class="inputstyle" type="number" name="amount_by_unit" id="">
                                 <small style="color:red"></small>
-                            </div>
-                            <div>
+                            </div> -->
+                            <!-- <div>
                                 <label class="labelname" for="country">Type</label>
                                 <select class="inputstyle" id="country" name="country">
                                     <option value="australia">Product Type</option>
                                 </select>
                                 <small style="color:red"></small>
 
-                            </div>
+                            </div> -->
                             <div>
                                 <label for="" class="labelname">Category</label>
-                                <select class="inputstyle" name="" id="">
+                                <select class="inputstyle listcategory" name="category" id="category-input">
                                     <option value="">Category</option>
                                 </select>
                                 <small style="color:red"></small>
@@ -1053,7 +1043,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
 
         </div>
         <div class="row  ashagi" style="background: white;">
@@ -1065,7 +1055,7 @@
             </div>
 
         </div>
-
+        </form>
     </div>
 
 
